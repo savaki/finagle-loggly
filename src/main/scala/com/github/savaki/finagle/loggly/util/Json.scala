@@ -1,10 +1,11 @@
 package com.github.savaki.finagle.loggly.util
 
-import org.codehaus.jackson.{JsonGenerator, Version, JsonNode}
-import org.codehaus.jackson.map.{SerializerProvider, JsonSerializer, ObjectMapper}
+import org.codehaus.jackson.{JsonParser, JsonGenerator, Version, JsonNode}
+import org.codehaus.jackson.map._
 import org.codehaus.jackson.map.module.SimpleModule
 import org.codehaus.jackson.map.annotate.JsonSerialize.Inclusion
 import java.util
+import scala.collection.JavaConversions._
 
 /**
  * @author matt.ho@gmail.com
@@ -27,7 +28,7 @@ object Json {
     val m: ObjectMapper = new ObjectMapper()
 
     val module: SimpleModule = new SimpleModule("finagle-loggly", new Version(1, 0, 0, ""))
-    module.addSerializer(classOf[Map[_, _]], new MapSerializer())
+    module.addSerializer(classOf[Map[_, _]], new MapSerializer)
 
     m.registerModule(module)
     m.setSerializationInclusion(Inclusion.NON_NULL)
