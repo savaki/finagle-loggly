@@ -6,6 +6,8 @@ version := "0.1"
 
 resolvers += "Twitter Repo" at "http://maven.twttr.com"
 
+resolvers += "OSS Sonatype" at "https://oss.sonatype.org/content/groups/public/"
+
 {
     val finagleVersion = "5.3.9"
     libraryDependencies ++= Seq(
@@ -19,7 +21,9 @@ resolvers += "Twitter Repo" at "http://maven.twttr.com"
 
 {
     libraryDependencies ++= Seq(
-        "org.scalatest" %% "scalatest" % "1.8" % "test" withSources()
+        "org.scalatest" %% "scalatest" % "1.9.1" % "test" withSources()
     )
 }
+
+scalaVersion := "2.9.2"
 

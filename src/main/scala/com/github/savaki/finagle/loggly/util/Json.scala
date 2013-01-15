@@ -13,7 +13,7 @@ import scala.collection.JavaConversions._
 class MapSerializer extends JsonSerializer[Map[_, _]] {
   def serialize(map: Map[_, _], generator: JsonGenerator, provider: SerializerProvider) {
     val javaMap = new util.HashMap[Object, Object]()
-    map.foreach {
+    map.asInstanceOf[Map[AnyRef, AnyRef]].foreach {
       entry => javaMap.put(entry._1.asInstanceOf[AnyRef], entry._2.asInstanceOf[AnyRef])
     }
     generator.writeObject(javaMap)
